@@ -1,0 +1,186 @@
+const header = document.getElementById("header");
+const menuButton = document.getElementById("menuButton");
+const nav = document.getElementById("nav");
+const modal = document.getElementById("atmosphereModal");
+const atmosphereButton = document.getElementById("openAtmosphereButton");
+const interiorPlayer = modal.querySelector("iframe");
+const interiorScreen = modal.querySelector(".interior-screen");
+
+window.addEventListener("scroll", () => {
+  header.classList.toggle("scrolled", window.scrollY > 80);
+});
+
+menuButton.addEventListener("click", () => {
+  const isOpen = nav.classList.toggle("open");
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+});
+
+nav.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("open");
+    menuButton.setAttribute("aria-expanded", "false");
+  });
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+function startReveal() {
+  document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+}
+
+// ===== Заставка «Вас приветствует ARS BARBERSHOP» =====
+const preloader = document.getElementById("preloader");
+const MIN_SHOW = 2200;   // минимум, чтобы успеть прочитать приветствие
+const MAX_SHOW = 7000;   // страховка: если что-то грузится слишком долго
+if (!preloader) {
+  document.body.classList.remove("loading");
+  startReveal();
+} else {
+  const bar = document.getElementById("preloaderBar");
+  const count = document.getElementById("preloaderCount");
+  const started = performance.now();
+  let loaded = document.readyState === "complete";
+  let finished = false;
+  let progress = 0;
+
+  window.addEventListener("load", () => { loaded = true; });
+  setTimeout(() => { loaded = true; }, MAX_SHOW);
+
+  function finish() {
+    if (finished) return;
+    finished = true;
+    document.body.classList.remove("loading");
+    preloader.classList.add("hide");
+    startReveal(); // текст на главной появляется, пока шторка уезжает
+    const remove = () => preloader.remove();
+    preloader.addEventListener("transitionend", (e) => { if (e.target === preloader) remove(); });
+    setTimeout(remove, 1600);
+  }
+
+  function tick(now) {
+    const elapsed = now - started;
+    const canFinish = loaded && elapsed >= MIN_SHOW;
+    const target = canFinish ? 100 : Math.min(92, 92 * (1 - Math.exp(-elapsed / 1300)));
+    progress += (target - progress) * 0.14;
+    if (canFinish && progress > 99.4) progress = 100;
+    bar.style.transform = `scaleX(${progress / 100})`;
+    count.textContent = Math.round(progress);
+    if (progress >= 100) setTimeout(finish, 250);
+    else requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+atmosphereButton.addEventListener("click", () => {
+  modal.showModal();
+  interiorPlayer.src = interiorPlayer.dataset.src;
+  if (document.fullscreenEnabled && !document.fullscreenElement) {
+    interiorScreen.requestFullscreen().catch(() => {
+      // The dialog still fills the viewport when native fullscreen is unavailable.
+    });
+  }
+});
+modal.addEventListener("close", () => {
+  interiorPlayer.removeAttribute("src");
+  if (document.fullscreenElement === interiorScreen) {
+    document.exitFullscreen().catch(() => {});
+  }
+  atmosphereButton.focus();
+});
+modal.addEventListener("click", (event) => {
+  if (event.target === modal) modal.close();
+});
+
+const hoursStatus = document.getElementById("hoursStatus");
+const opensAt = document.getElementById("opensAt").textContent;
+const closesAt = document.getElementById("closesAt").textContent;
+const localClock = new Intl.DateTimeFormat("en-GB", {
+  timeZone: "Europe/Simferopol",
+  hour: "2-digit",
+  minute: "2-digit",
+  hourCycle: "h23"
+});
+
+function updateHours() {
+  const time = localClock.format(new Date());
+  const open = time >= opensAt && time < closesAt;
+  hoursStatus.textContent = open ? "Открыты до " + closesAt : "Закрыто до " + opensAt;
+  hoursStatus.parentElement.classList.toggle("closed", !open);
+}
+
+updateHours();
+setInterval(updateHours, 1000);
+document.addEventListener("visibilitychange", updateHours);
+
+const bookingDialog = document.getElementById("bookingDialog");
+const courseCall = document.querySelector(".course-call");
+function animateCourseCall() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  courseCall.animate([{ transform:"scale(1)" }, { transform:"scale(.96)", offset:.3 }, { transform:"scale(1)" }], { duration:220, easing:"ease-out" });
+  courseCall.querySelector("svg").animate([
+    { transform:"rotate(0)" }, { transform:"rotate(-16deg)" },
+    { transform:"rotate(10deg)" }, { transform:"rotate(0)" }
+  ], { duration:280, easing:"ease-out" });
+}
+courseCall.addEventListener("pointerdown", (event) => {
+  if (event.isPrimary && event.button === 0) animateCourseCall();
+});
+courseCall.addEventListener("click", (event) => {
+  if (event.detail === 0) animateCourseCall();
+});
+const bookingFrame = bookingDialog.querySelector("iframe");
+const mobileBooking = document.querySelector(".mobile-booking");
+const bookingHero = document.querySelector(".hero");
+function updateMobileBooking() {
+  mobileBooking.hidden = bookingHero.getBoundingClientRect().bottom > 0;
+}
+new IntersectionObserver(updateMobileBooking).observe(bookingHero);
+window.addEventListener("pageshow", updateMobileBooking);
+
+document.querySelectorAll("[data-booking-url]").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    bookingFrame.src = link.dataset.bookingUrl;
+    bookingDialog.showModal();
+  });
+});
+
+bookingDialog.addEventListener("close", () => bookingFrame.removeAttribute("src"));
+bookingDialog.addEventListener("click", (event) => {
+  if (event.target === bookingDialog) bookingDialog.close();
+});
+
+document.querySelectorAll(".portfolio-dialog").forEach((gallery) => {
+  const pictures = [...gallery.querySelectorAll(".gallery-stage img")];
+  const choices = [...gallery.querySelectorAll(".gallery-thumbs button")];
+  const caption = gallery.querySelector(".gallery-caption");
+  function selectPhoto(index) {
+    pictures.forEach((photo, i) => {
+      photo.hidden = i !== index;
+      choices[i].setAttribute("aria-pressed", String(i === index));
+    });
+    caption.textContent = pictures[index].alt;
+  }
+  choices.forEach((choice, i) => choice.addEventListener("click", () => selectPhoto(i)));
+  gallery.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+    event.preventDefault();
+    const active = pictures.findIndex((photo) => !photo.hidden);
+    const step = event.key === "ArrowRight" ? 1 : -1;
+    selectPhoto((active + step + pictures.length) % pictures.length);
+  });
+  gallery.addEventListener("close", () => selectPhoto(0));
+});
+
+document.querySelectorAll(".master-works-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    document.getElementById(button.getAttribute("aria-controls")).showModal();
+  });
+});
