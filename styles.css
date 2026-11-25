@@ -186,7 +186,7 @@ footer p:last-child { text-align:right; }
 
 .atmosphere-modal { position:fixed; inset:0; margin:auto; padding:0; width:100%; height:100dvh; max-width:none; max-height:none; border:0; background:#09090a; }
 .interior-screen { position:relative; width:100%; height:100%; background:#09090a; }
-.interior-screen iframe { display:block; border:0; width:100%; height:100%; }
+.interior-screen video { object-fit:contain; display:block; border:0; width:100%; height:100%; }
 body:has(.atmosphere-modal[open]) { overflow:hidden; }
 .modal-close { position:absolute; z-index:5; right:35px; top:25px; width:52px; height:52px; border:1px solid rgba(255,255,255,.55); border-radius:50%; background:rgba(0,0,0,.35); backdrop-filter:blur(6px); color:white; font-size:28px; cursor:pointer; transition:.25s; }
 .modal-close:hover { background:var(--acid); color:var(--ink); border-color:var(--acid); }

@@ -3,7 +3,7 @@ const menuButton = document.getElementById("menuButton");
 const nav = document.getElementById("nav");
 const modal = document.getElementById("atmosphereModal");
 const atmosphereButton = document.getElementById("openAtmosphereButton");
-const interiorPlayer = modal.querySelector("iframe");
+const interiorPlayer = modal.querySelector("video");
 const interiorScreen = modal.querySelector(".interior-screen");
 
 window.addEventListener("scroll", () => {
@@ -81,6 +81,7 @@ if (!preloader) {
 atmosphereButton.addEventListener("click", () => {
   modal.showModal();
   interiorPlayer.src = interiorPlayer.dataset.src;
+  interiorPlayer.play().catch(() => {});
   if (document.fullscreenEnabled && !document.fullscreenElement) {
     interiorScreen.requestFullscreen().catch(() => {
       // The dialog still fills the viewport when native fullscreen is unavailable.
@@ -88,7 +89,9 @@ atmosphereButton.addEventListener("click", () => {
   }
 });
 modal.addEventListener("close", () => {
+  interiorPlayer.pause();
   interiorPlayer.removeAttribute("src");
+  interiorPlayer.load();
   if (document.fullscreenElement === interiorScreen) {
     document.exitFullscreen().catch(() => {});
   }
