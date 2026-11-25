@@ -145,16 +145,13 @@ button, input, select { font: inherit; }
 .team-lead .master-meta p { margin-top:8px; color:#e5c881; font-weight:700; }
 @media (min-width:981px) {
   .master-layout { grid-template-columns:1fr 1.45fr 1fr; align-items:center; gap:28px; }
-  .team-lead { grid-column:2; grid-row:1 / span 2; align-self:start; }
-  .master-card .master-photo { height:auto; aspect-ratio:3 / 2; }
-  .team-lead .master-photo { aspect-ratio:4 / 5; }
+  .team-lead { grid-column:2; grid-row:1 / span 2; align-self:center; }
 }
 @media (min-width:641px) and (max-width:980px) {
   .master-layout { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .team-lead { grid-column:1 / -1; width:min(100%,460px); justify-self:center; }
 }
-.master-photo { height:440px; overflow:hidden; background:#292a2d; }
-.master-photo img { display:block; width:100%; height:100%; object-fit:contain; object-position:center; }
+.master-photo img { display:block; width:100%; height:auto; }
 .master-meta { display:flex; justify-content:space-between; align-items:start; padding:20px 4px 0; border-top:1px solid var(--line); }
 .master-meta h3 { margin:0 0 5px; font-family:"Oswald"; font-size:21px; text-transform:uppercase; }
 .master-meta p { margin:0; color:#58554f; font-size:11px; text-transform:uppercase; letter-spacing:1px; }
@@ -220,7 +217,6 @@ body:has(.atmosphere-modal[open]) { overflow:hidden; }
   .work-tall { grid-row:auto; }
   .work-card:last-child { grid-column:auto; }
   .price-list { grid-template-columns:1fr; }
-  .master-photo { height:360px; }
 }
 @media (max-width: 640px) {
   .header { height:72px; padding:0 12px; }
@@ -246,7 +242,6 @@ body:has(.atmosphere-modal[open]) { overflow:hidden; }
   .service-grid { grid-template-columns:1fr; }
   .service-card, .service-card:last-child { grid-column:auto; height:430px; }
   .master-layout { grid-template-columns:1fr; gap:32px; }
-  .master-photo { height:420px; }
   .works-grid { grid-template-columns:1fr; grid-template-rows:none; }
   .work-card, .work-tall, .work-card:last-child { grid-column:auto; grid-row:auto; height:380px; }
   .price-heading h2 { font-size:clamp(36px,9vw,52px); }
