@@ -439,8 +439,8 @@ body.loading { overflow:hidden; }
 .booking-dialog-bar button { cursor:pointer; padding:9px 14px; color:#f4ecda; background:transparent; border:1px solid #9c8b69; border-radius:22px; }
 .booking-dialog iframe { flex:1; min-height:0; width:100%; border:0; }
 .mobile-booking { display:none; }
-.hero-directions { color:#f4ecda; border:1px solid #d1b675; background:#191817c9; }
-.hero-directions:hover,.hero-directions:focus-visible { background:#e5c881; color:#191817; }
+.hero-directions { color:#191817; border:1px solid #e5c881; background:#e5c881; }
+.hero-directions:hover,.hero-directions:focus-visible { background:#f4dfaa; }
 .contact-location { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:clamp(20px,4vw,52px); align-items:center; max-width:980px; margin:auto; }
 .location-map { display:block; width:100%; height:clamp(310px,36vw,420px); border:1px solid #897246; border-radius:12px; scroll-margin-top:84px; }
 .contact-location .booking-details { grid-template-columns:1fr; gap:14px; }
