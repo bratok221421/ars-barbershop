@@ -231,15 +231,3 @@ document.querySelectorAll(".master-about").forEach((button) => {
     masterDialog.showModal();
   });
 });
-
-const heroFilm = document.querySelector(".hero-film");
-const filmBackdrop = document.querySelector(".hero-film-backdrop");
-const backdropContext = filmBackdrop.getContext("2d");
-function updateFilmBackdrop() {
-  if (backdropContext && heroFilm.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
-    backdropContext.drawImage(heroFilm, 0, 0, filmBackdrop.width, filmBackdrop.height);
-  }
-}
-heroFilm.addEventListener("loadeddata", updateFilmBackdrop);
-heroFilm.addEventListener("timeupdate", updateFilmBackdrop);
-updateFilmBackdrop();

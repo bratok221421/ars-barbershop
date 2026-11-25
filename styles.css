@@ -557,14 +557,3 @@ body:has(.master-dialog[open]) { overflow:hidden; }
   .master-card .master-photo.master-photo-khatidzhe img { height:auto; }
   .master-photo-khatidzhe .master-about { position:static; display:block; margin:8px 0 8px auto; }
 }
-
-.hero-bg { overflow:hidden; animation:none; transform:none; container-type:size; display:grid; place-items:center; }
-.hero-film-backdrop { position:absolute; inset:-5%; width:110%; height:110%; object-fit:cover; filter:blur(20px) brightness(.8); pointer-events:none; }
-.hero-film { position:relative; display:block; width:min(100%,56.25cqh); height:100%; object-fit:contain; }
-.hero-bg::after { content:""; position:absolute; inset:0; background:linear-gradient(0deg,#101014b8,#10101460 65%,#10101488); }
-@media (max-width:640px) {
-  .hero-bg { height:min(177.7778vw,calc(100svh - 68px)); aspect-ratio:auto; }
-  .hero { padding-top:calc(68px + min(177.7778vw,calc(100svh - 68px))); }
-  .hero-bg::after { display:none; }
-}
-@media (prefers-reduced-motion:reduce) { .hero-film, .hero-film-backdrop { display:none; } }
