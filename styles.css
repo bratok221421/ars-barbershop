@@ -482,3 +482,9 @@ body:has(.booking-dialog[open]) { overflow:hidden; }
   .services .section-heading h2 { font-size:clamp(34px,9vw,48px); }
   .catalog-info h4 { overflow-wrap:anywhere; }
 }
+
+.service-rates { width:100%; margin-top:10px; }
+.service-rates a { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:4px; min-height:44px; border-top:1px solid #685b44; color:#f4ecda; font-size:13px; }
+.service-rates a:hover, .service-rates a:focus-visible { color:#e5c881; text-decoration:underline; }
+.price-row strong small { font-family:"Manrope",sans-serif; }
+.map-key { margin:10px 0; text-align:left; color:#f4ecda; font-size:14px; }
