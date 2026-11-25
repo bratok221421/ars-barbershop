@@ -218,3 +218,12 @@ findMe.addEventListener("click", () => {
     findMe.disabled = false;
   }, { enableHighAccuracy:true, timeout:15000, maximumAge:60000 });
 });
+
+const masterDialog = document.getElementById("masterDialog");
+document.querySelectorAll(".master-about").forEach((button) => {
+  button.addEventListener("click", () => {
+    document.getElementById("masterDialogName").textContent = button.dataset.name;
+    document.getElementById("masterDialogBio").textContent = button.dataset.bio;
+    masterDialog.showModal();
+  });
+});

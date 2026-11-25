@@ -51,7 +51,7 @@ body.loading { overflow:hidden; }
 }
 
 </style>
-  <link rel="stylesheet" href="styles.css?v=55">
+  <link rel="stylesheet" href="styles.css?v=56">
   <noscript><style>.preloader{display:none!important}body.loading{overflow:auto!important}</style></noscript>
 </head>
 <body class="loading">
@@ -291,23 +291,23 @@ body.loading { overflow:hidden; }
       </div>
       <div class="master-layout">
         <article class="master-card team-lead reveal">
-          <div class="master-photo"><img src="assets/profile-3986618.jpg" alt="Арсен Олегович" loading="lazy"></div>
+          <div class="master-photo"><img src="assets/profile-3986618.jpg" alt="Арсен Олегович" loading="lazy"><button class="master-about" type="button" aria-haspopup="dialog" aria-controls="masterDialog" aria-label="О мастере — Арсен Олегович" data-name="Арсен Олегович" data-bio="Арсен Олегович руководит проектом и отвечает за творческое направление барбершопа. В академии барберинга в Крыму он обучает будущих мастеров.">О мастере</button></div>
           <div class="master-meta"><div><h3><a href="#booking" aria-haspopup="dialog" data-booking-url="https://dikidi.net/ru/record/1854348?st_m=1&amp;sm_m=3986618">Арсен Олегович</a></h3><p>Руководитель проекта</p></div></div>
         </article>
         <article class="master-card reveal">
-          <div class="master-photo portrait-fill" style="--portrait:url('assets/team-4470707.webp')"><img src="assets/team-4470707.webp" alt="Арсен Barber" loading="lazy"></div>
+          <div class="master-photo portrait-fill" style="--portrait:url('assets/team-4470707.webp')"><img src="assets/team-4470707.webp" alt="Арсен Barber" loading="lazy"><button class="master-about" type="button" aria-haspopup="dialog" aria-controls="masterDialog" aria-label="О мастере — Арсен Barber" data-name="Арсен Barber" data-bio="Арсен тактичен в общении и внимательно подбирает стрижку для каждого клиента. В работе ценит точность, а в кресле у него легко расслабиться.">О мастере</button></div>
           <div class="master-meta"><div><h3><a href="#booking" aria-haspopup="dialog" data-booking-url="https://dikidi.net/ru/record/1854348?st_m=1&amp;sm_m=4470707">Арсен Barber</a></h3><p>Старший мастер</p></div></div>
         </article>
         <article class="master-card reveal">
-          <div class="master-photo"><img src="assets/team-4304953.webp" alt="Тимур Barber" loading="lazy"></div>
+          <div class="master-photo"><img src="assets/team-4304953.webp" alt="Тимур Barber" loading="lazy"><button class="master-about" type="button" aria-haspopup="dialog" aria-controls="masterDialog" aria-label="О мастере — Тимур Barber" data-name="Тимур Barber" data-bio="Тимур подбирает стрижку и форму бороды индивидуально. За работой с ним легко поддержать разговор.">О мастере</button></div>
           <div class="master-meta"><div><h3><a href="#booking" aria-haspopup="dialog" data-booking-url="https://dikidi.net/ru/record/1854348?st_m=1&amp;sm_m=4304953">Тимур Barber</a></h3><p>Старший мастер</p></div></div>
         </article>
         <article class="master-card reveal">
-          <div class="master-photo"><img src="assets/profile-3985136.jpg" alt="Хатидже Barber" loading="lazy"></div>
+          <div class="master-photo"><img src="assets/profile-3985136.jpg" alt="Хатидже Barber" loading="lazy"><button class="master-about" type="button" aria-haspopup="dialog" aria-controls="masterDialog" aria-label="О мастере — Хатидже Barber" data-name="Хатидже Barber" data-bio="Хатидже внимательно слушает и быстро понимает, какой результат вы хотите получить. К ней можно прийти и с идеей необычной стрижки — она открыта к экспериментам.">О мастере</button></div>
           <div class="master-meta"><div><h3><a href="#booking" aria-haspopup="dialog" data-booking-url="https://dikidi.net/ru/record/1854348?st_m=1&amp;sm_m=3985136">Хатидже Barber</a></h3><p>Старший мастер</p></div></div>
         </article>
         <article class="master-card reveal">
-          <div class="master-photo portrait-fill" style="--portrait:url('assets/team-3989808.webp')"><img src="assets/team-3989808.webp" alt="Эмиль Barber" loading="lazy"></div>
+          <div class="master-photo portrait-fill" style="--portrait:url('assets/team-3989808.webp')"><img src="assets/team-3989808.webp" alt="Эмиль Barber" loading="lazy"><button class="master-about" type="button" aria-haspopup="dialog" aria-controls="masterDialog" aria-label="О мастере — Эмиль Barber" data-name="Эмиль Barber" data-bio="Эмиль — энергичный и вежливый мастер. Если хочется сменить образ, он предложит свежую идею для стрижки.">О мастере</button></div>
           <div class="master-meta"><div><h3><a href="#booking" aria-haspopup="dialog" data-booking-url="https://dikidi.net/ru/record/1854348?st_m=1&amp;sm_m=3989808">Эмиль Barber</a></h3><p>Старший мастер</p></div></div>
         </article>
       </div>
@@ -360,6 +360,11 @@ body.loading { overflow:hidden; }
   
   
   
+  <dialog id="masterDialog" class="master-dialog" aria-labelledby="masterDialogName" aria-describedby="masterDialogBio">
+    <form method="dialog"><button aria-label="Закрыть описание" autofocus>×</button></form>
+    <h2 id="masterDialogName"></h2>
+    <p id="masterDialogBio"></p>
+  </dialog>
   <dialog id="bookingDialog" class="booking-dialog" aria-labelledby="bookingTitle">
     <div class="booking-dialog-bar">
       <strong id="bookingTitle">Онлайн-запись · БАРБЕРШОП N1</strong>
@@ -374,6 +379,6 @@ body.loading { overflow:hidden; }
     </section>
     <iframe hidden title="Выбор услуги, мастера и времени в DIKIDI"></iframe>
   </dialog>
-  <script src="script.js?v=35"></script>
+  <script src="script.js?v=36"></script>
 </body>
 </html>

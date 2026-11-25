@@ -506,3 +506,14 @@ body:has(.booking-dialog[open]) { overflow:hidden; }
   .directions-copy h2 em { display:inline; }
   .directions-copy .directions-address { margin-top:16px; }
 }
+
+.master-photo { position:relative; }
+.master-about { position:absolute; bottom:12px; right:12px; padding:9px 16px; min-height:44px; border:1px solid #cdb47b; border-radius:24px; background:#191817; color:#f4ecda; font:600 14px/1.3 "Manrope",sans-serif; cursor:pointer; }
+.master-about:hover, .master-about:focus-visible { background:#ead198; color:#191817; }
+.master-dialog { width:min(440px,calc(100% - 32px)); margin:auto; padding:30px; border:1px solid #aa905b; border-radius:16px; color:#191817; background:var(--paper); }
+.master-dialog::backdrop { background:rgba(9,9,10,.76); }
+.master-dialog h2 { margin:0 38px 16px 0; font:500 32px/1.15 "Oswald",sans-serif; }
+.master-dialog p { margin:0; line-height:1.65; }
+.master-dialog form { position:absolute; top:12px; right:12px; }
+.master-dialog button { width:44px; height:44px; border:0; border-radius:50%; background:transparent; color:inherit; font-size:26px; cursor:pointer; }
+body:has(.master-dialog[open]) { overflow:hidden; }
