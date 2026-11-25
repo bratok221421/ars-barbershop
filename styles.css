@@ -424,7 +424,7 @@ body.loading { overflow:hidden; }
   .brand-wordmark { font-size:20px; }
 }
 
-.brand-city { display:block; color:#e5c881; font:600 10px/1.2 "Manrope",sans-serif; letter-spacing:.15em; text-transform:uppercase; }
+.brand-city { display:block; color:#e5c881; font:600 10px/1.2 "Manrope",sans-serif; letter-spacing:.15em; text-transform:none; }
 .brand-wordmark small { color:#f4ecda; }
 .welcome-caption .brand-city { display:flex; justify-content:center; align-items:center; gap:12px; margin-top:8px; font-size:clamp(11px,1.5vmin,14px); letter-spacing:.2em; }
 .welcome-caption .brand-city::before, .welcome-caption .brand-city::after { content:""; width:24px; height:1px; background:currentColor; opacity:.65; }
