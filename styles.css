@@ -38,8 +38,8 @@ button, input, select { font: inherit; }
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse at center, rgba(10,11,13,.38) 0%, rgba(10,11,13,.12) 70%, rgba(10,11,13,.04) 100%),
-    url("ars-welcome.webp") 72% 28%/cover no-repeat;
+    linear-gradient(0deg, rgba(10,11,13,.72), rgba(10,11,13,.42) 65%, rgba(10,11,13,.58)),
+    url("assets/hero-team.webp") center 58%/cover no-repeat;
   transform: scale(1.03); animation: heroZoom 12s ease-out forwards;
 }
 @keyframes heroZoom { to { transform: scale(1); } }
@@ -227,7 +227,7 @@ body:has(.atmosphere-modal[open]) { overflow:hidden; }
   .brand { gap:10px; font-size:30px; }
   .brand-mark { width:44px; height:44px; font-size:23px; }
   .hero { min-height:680px; }
-  .hero-bg { background-position:center, 90% 28%; }
+  .hero-bg { inset:68px 0 auto; aspect-ratio:4 / 3; background-position:center; background-size:cover; animation:none; transform:none; background-image:linear-gradient(0deg,#17181b,transparent 23%),url("assets/hero-team.webp"); }
   .hero-copy { padding:80px 22px 90px; text-align:center; }
   .hero-copy .eyebrow { justify-content:center; }
   .hero h1 { font-size:min(17vw, 84px); letter-spacing:-.03em; }
@@ -531,7 +531,7 @@ body:has(.master-dialog[open]) { overflow:hidden; }
   .header .brand { gap:7px; }
   .header .brand-emblem { width:38px; height:38px; }
   .header .brand-wordmark { font-size:clamp(14px,4vw,20px); }
-  .hero { display:flex; flex-direction:column; height:auto; min-height:100svh; max-height:none; padding:84px 16px 20px; }
+  .hero { display:flex; flex-direction:column; height:auto; min-height:100svh; max-height:none; padding:calc(68px + 75vw) 16px 20px; }
   .hero-copy { flex:1; position:relative; inset:auto; padding:18px 0; }
   .hero-aside { position:relative; inset:auto; padding-top:10px; }
   .hero h1 { font-size:clamp(48px,14vw,82px); }
