@@ -551,3 +551,9 @@ body:has(.master-dialog[open]) { overflow:hidden; }
   .catalog-card img { align-self:stretch; height:100%; min-height:0; aspect-ratio:auto; object-fit:cover; }
   .catalog-info h4 { overflow-wrap:break-word; }
 }
+
+@media (max-width:640px) {
+  .master-card .master-photo.master-photo-khatidzhe { aspect-ratio:auto; overflow:visible; }
+  .master-card .master-photo.master-photo-khatidzhe img { height:auto; }
+  .master-photo-khatidzhe .master-about { position:static; display:block; margin:8px 0 8px auto; }
+}
