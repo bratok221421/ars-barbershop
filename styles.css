@@ -154,8 +154,7 @@ button, input, select { font: inherit; }
   .team-lead { grid-column:1 / -1; width:min(100%,460px); justify-self:center; }
 }
 .master-photo { height:440px; overflow:hidden; background:#292a2d; }
-.master-photo img { display:block; width:100%; height:100%; object-fit:cover; object-position:center 18%; transition:.5s; }
-.master-card:hover .master-photo img { transform:scale(1.025); }
+.master-photo img { display:block; width:100%; height:100%; object-fit:contain; object-position:center; }
 .master-meta { display:flex; justify-content:space-between; align-items:start; padding:20px 4px 0; border-top:1px solid var(--line); }
 .master-meta h3 { margin:0 0 5px; font-family:"Oswald"; font-size:21px; text-transform:uppercase; }
 .master-meta p { margin:0; color:#58554f; font-size:11px; text-transform:uppercase; letter-spacing:1px; }
