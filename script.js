@@ -156,31 +156,3 @@ bookingDialog.addEventListener("close", () => bookingFrame.removeAttribute("src"
 bookingDialog.addEventListener("click", (event) => {
   if (event.target === bookingDialog) bookingDialog.close();
 });
-
-document.querySelectorAll(".portfolio-dialog").forEach((gallery) => {
-  const pictures = [...gallery.querySelectorAll(".gallery-stage img")];
-  const choices = [...gallery.querySelectorAll(".gallery-thumbs button")];
-  const caption = gallery.querySelector(".gallery-caption");
-  function selectPhoto(index) {
-    pictures.forEach((photo, i) => {
-      photo.hidden = i !== index;
-      choices[i].setAttribute("aria-pressed", String(i === index));
-    });
-    caption.textContent = pictures[index].alt;
-  }
-  choices.forEach((choice, i) => choice.addEventListener("click", () => selectPhoto(i)));
-  gallery.addEventListener("keydown", (event) => {
-    if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
-    event.preventDefault();
-    const active = pictures.findIndex((photo) => !photo.hidden);
-    const step = event.key === "ArrowRight" ? 1 : -1;
-    selectPhoto((active + step + pictures.length) % pictures.length);
-  });
-  gallery.addEventListener("close", () => selectPhoto(0));
-});
-
-document.querySelectorAll(".master-works-button").forEach((button) => {
-  button.addEventListener("click", () => {
-    document.getElementById(button.getAttribute("aria-controls")).showModal();
-  });
-});
