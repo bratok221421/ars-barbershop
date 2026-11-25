@@ -199,14 +199,14 @@ findMe.addEventListener("click", () => {
   navigator.geolocation.getCurrentPosition((position) => {
     const {latitude, longitude} = position.coords;
     const map = new URL(shopMapUrl);
-    const dx = Math.max(.0025, Math.abs(longitude - 33.840740) * .7);
-    const dy = Math.max(.0015, Math.abs(latitude - 44.746630) * .7);
-    const cx = (longitude + 33.840740) / 2;
-    const cy = (latitude + 44.746630) / 2;
+    const dx = Math.max(.0025, Math.abs(longitude - 33.840604) * .7);
+    const dy = Math.max(.0015, Math.abs(latitude - 44.746561) * .7);
+    const cx = (longitude + 33.840604) / 2;
+    const cy = (latitude + 44.746561) / 2;
     map.searchParams.delete("ll");
     map.searchParams.delete("z");
     map.searchParams.set("bbox", [cx-dx,cy-dy,cx+dx,cy+dy].join(","));
-    map.searchParams.set("pt", "33.840740,44.746630,pm2rdm~" + longitude + "," + latitude + ",pm2blm");
+    map.searchParams.set("pt", "33.840604,44.746561,pm2rdm~" + longitude + "," + latitude + ",pm2blm");
     streetMap.src = map.href;
     locationStatus.textContent = "Синяя метка — вы, красная — барбершоп. Точность вашего местоположения: около " +
       Math.ceil(position.coords.accuracy) + " м.";
