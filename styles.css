@@ -488,3 +488,16 @@ body:has(.booking-dialog[open]) { overflow:hidden; }
 .service-rates a:hover, .service-rates a:focus-visible { color:#e5c881; text-decoration:underline; }
 .price-row strong small { font-family:"Manrope",sans-serif; }
 .map-key { margin:10px 0; text-align:left; color:#f4ecda; font-size:14px; }
+
+.directions-section { display:grid; grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr); gap:clamp(28px,6vw,100px); align-items:center; padding:clamp(46px,6vw,92px) 8.5vw; background:#191817; color:#f4ecda; border-bottom:1px solid #897246; scroll-margin-top:72px; }
+.directions-copy h2 { margin:0; font:500 clamp(40px,5vw,76px)/1.05 "Oswald",sans-serif; text-transform:uppercase; }
+.directions-copy h2 em { display:block; font-style:normal; color:#e5c881; }
+.directions-copy p { color:#cec8bb; font-size:14px; }
+.directions-copy .directions-address { margin:24px 0 8px; font-size:clamp(19px,2vw,28px); line-height:1.35; color:#f4ecda; }
+.directions-copy .directions-pin { display:flex; align-items:center; gap:9px; margin:24px 0 0; }
+.directions-pin::before { content:""; width:10px; height:10px; border-radius:50%; background:#e14543; }
+@media(max-width:760px) {
+  .directions-section { grid-template-columns:1fr; gap:22px; padding:42px 20px; }
+  .directions-copy h2 em { display:inline; }
+  .directions-copy .directions-address { margin-top:16px; }
+}
