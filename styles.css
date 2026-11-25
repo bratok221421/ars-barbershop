@@ -152,6 +152,10 @@ button, input, select { font: inherit; }
   .team-lead { grid-column:1 / -1; width:min(100%,460px); justify-self:center; }
 }
 .master-photo img { display:block; width:100%; height:auto; }
+.master-card:not(.team-lead) .master-photo { position:relative; aspect-ratio:1; overflow:hidden; }
+.master-card:not(.team-lead) .master-photo img { position:relative; height:100%; object-fit:contain; }
+.portrait-fill::before { content:""; position:absolute; inset:-8%; background:var(--portrait) center / cover; filter:blur(14px); }
+
 .master-meta { display:flex; justify-content:space-between; align-items:start; padding:20px 4px 0; border-top:1px solid var(--line); }
 .master-meta h3 { margin:0 0 5px; font-family:"Oswald"; font-size:21px; text-transform:uppercase; }
 .master-meta p { margin:0; color:#58554f; font-size:11px; text-transform:uppercase; letter-spacing:1px; }
@@ -242,6 +246,7 @@ body:has(.atmosphere-modal[open]) { overflow:hidden; }
   .service-grid { grid-template-columns:1fr; }
   .service-card, .service-card:last-child { grid-column:auto; height:430px; }
   .master-layout { grid-template-columns:1fr; gap:32px; }
+  .master-card:not(.team-lead) { width:86%; justify-self:center; }
   .works-grid { grid-template-columns:1fr; grid-template-rows:none; }
   .work-card, .work-tall, .work-card:last-child { grid-column:auto; grid-row:auto; height:380px; }
   .price-heading h2 { font-size:clamp(36px,9vw,52px); }
