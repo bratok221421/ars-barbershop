@@ -51,7 +51,8 @@ body.loading { overflow:hidden; }
 }
 
 </style>
-  <link rel="stylesheet" href="styles.css?v=48">
+  <link rel="stylesheet" href="assets/leaflet/leaflet.css">
+  <link rel="stylesheet" href="styles.css?v=49">
   <noscript><style>.preloader{display:none!important}body.loading{overflow:auto!important}</style></noscript>
 </head>
 <body class="loading">
@@ -95,7 +96,7 @@ body.loading { overflow:hidden; }
         <p class="hero-lead">Мы создаём не просто причёску, а образ, который остаётся с вами после выхода из кресла.</p>
         <div class="hero-actions">
           <a class="button button-light" href="#booking" aria-haspopup="dialog" data-booking-url="https://dikidi.net/ru/record/1854348?st_m=2"><span>Выбрать время</span></a>
-          <a class="button hero-directions" href="#location-map">Как добраться</a>
+          <a class="button button-light" href="#location-map"><span>Как добраться</span></a>
           <button class="play-button" id="openAtmosphereButton" type="button" aria-label="Посмотреть видео интерьера">
             <span class="play-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
             <span>Посмотреть интерьер</span>
@@ -335,7 +336,14 @@ body.loading { overflow:hidden; }
           <h2>Твой новый<br><em>образ уже близко</em></h2>
           <p>Выберите услугу, мастера и свободное время в DIKIDI.</p>
           <div class="contact-location">
-            <iframe class="location-map" id="location-map" title="ARS Barber на карте — Бахчисарай, Крымская улица, 2Д" src="https://www.openstreetmap.org/export/embed.html?bbox=33.838240%2C44.745430%2C33.843240%2C44.747830&amp;layer=mapnik&amp;marker=44.746630%2C33.840740" loading="lazy"></iframe>
+            <div id="location-map" class="map-panel">
+              <div id="street-map" class="location-map" role="region" aria-label="Карта проезда к ARS Barber, Крымская улица, 2Д"></div>
+              <div class="map-tools">
+                <button id="find-me" class="chip" type="button">Где я?</button>
+                <button id="find-shop" class="chip" type="button">Показать барбершоп</button>
+              </div>
+              <p id="location-status" role="status"></p>
+            </div>
             <div>
           <div class="booking-details">
             <div><span>Адрес</span><strong>Бахчисарай, Крымская улица, 2Д</strong></div>
@@ -388,6 +396,7 @@ body.loading { overflow:hidden; }
     </div>
     <iframe title="Выбор услуги, мастера и времени в DIKIDI"></iframe>
   </dialog>
-  <script src="script.js?v=30"></script>
+  <script src="assets/leaflet/leaflet.js"></script>
+  <script src="script.js?v=31"></script>
 </body>
 </html>

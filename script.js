@@ -156,3 +156,50 @@ bookingDialog.addEventListener("close", () => bookingFrame.removeAttribute("src"
 bookingDialog.addEventListener("click", (event) => {
   if (event.target === bookingDialog) bookingDialog.close();
 });
+
+const shopPoint = [44.746630, 33.840740];
+const streetMap = L.map("street-map", { scrollWheelZoom:false }).setView(shopPoint, 17);
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom:19,
+  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(streetMap);
+L.circleMarker(shopPoint, {
+  radius:10, color:"#312413", weight:3, fillColor:"#efc35c", fillOpacity:1
+}).addTo(streetMap).bindTooltip("ARS Barber · Крымская, 2Д", {
+  permanent:true, direction:"top", offset:[0,-12], opacity:1
+});
+
+const findMe = document.getElementById("find-me");
+const locationStatus = document.getElementById("location-status");
+let visitorMarker;
+document.getElementById("find-shop").addEventListener("click", () => {
+  streetMap.setView(shopPoint, 17);
+});
+findMe.addEventListener("click", () => {
+  if (!navigator.geolocation || !window.isSecureContext) {
+    locationStatus.textContent = "Для определения местоположения откройте сайт в браузере по HTTPS.";
+    return;
+  }
+  findMe.disabled = true;
+  locationStatus.textContent = "Определяем ваше местоположение…";
+  navigator.geolocation.getCurrentPosition((position) => {
+    const point = L.latLng(position.coords.latitude, position.coords.longitude);
+    if (visitorMarker) visitorMarker.setLatLng(point);
+    else visitorMarker = L.circleMarker(point, {
+      radius:7, color:"#fff", weight:3, fillColor:"#176adb", fillOpacity:1
+    }).addTo(streetMap).bindTooltip("Вы здесь", {
+      permanent:true, direction:"bottom", offset:[0,10], opacity:1
+    });
+    streetMap.fitBounds(L.latLngBounds([shopPoint, point]), {
+      padding:[Math.min(105, streetMap.getSize().x / 3),48], maxZoom:18
+    });
+    locationStatus.textContent = "Синяя точка — вы, золотая — барбершоп. Точность вашего местоположения: около " +
+      Math.ceil(position.coords.accuracy) + " м.";
+    findMe.disabled = false;
+  }, (error) => {
+    locationStatus.textContent = error.code === 1
+      ? "Разрешите доступ к геопозиции в настройках сайта и снова нажмите «Где я?»."
+      : "Не удалось определить местоположение. Проверьте, включена ли геолокация, и попробуйте ещё раз.";
+    findMe.disabled = false;
+  }, { enableHighAccuracy:true, timeout:15000, maximumAge:60000 });
+});
