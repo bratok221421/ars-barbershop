@@ -10,16 +10,23 @@ window.addEventListener("scroll", () => {
   header.classList.toggle("scrolled", window.scrollY > 80);
 });
 
-menuButton.addEventListener("click", () => {
-  const isOpen = nav.classList.toggle("open");
-  menuButton.setAttribute("aria-expanded", String(isOpen));
+function setMenuOpen(open) {
+  nav.classList.toggle("open", open);
+  menuButton.setAttribute("aria-expanded", String(open));
+  menuButton.setAttribute("aria-label", open ? "Закрыть меню" : "Открыть меню");
+}
+menuButton.addEventListener("click", () => setMenuOpen(!nav.classList.contains("open")));
+nav.addEventListener("click", (event) => {
+  if (event.target.closest("a")) setMenuOpen(false);
 });
-
-nav.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    menuButton.setAttribute("aria-expanded", "false");
-  });
+document.addEventListener("click", (event) => {
+  if (nav.classList.contains("open") && !nav.contains(event.target) && !menuButton.contains(event.target)) setMenuOpen(false);
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && nav.classList.contains("open")) {
+    setMenuOpen(false);
+    menuButton.focus();
+  }
 });
 
 const observer = new IntersectionObserver((entries) => {

@@ -517,3 +517,37 @@ body:has(.booking-dialog[open]) { overflow:hidden; }
 .master-dialog form { position:absolute; top:12px; right:12px; }
 .master-dialog button { width:44px; height:44px; border:0; border-radius:50%; background:transparent; color:inherit; font-size:26px; cursor:pointer; }
 body:has(.master-dialog[open]) { overflow:hidden; }
+
+@media (max-width:980px) {
+  html { scroll-padding-top:76px; }
+  .header { height:68px; padding-inline:clamp(12px,3vw,24px); grid-template-columns:minmax(0,1fr) auto auto; gap:8px; }
+  .header.scrolled { height:68px; }
+  .menu-button { align-items:center; }
+  .header-action { display:inline-flex; min-height:44px; padding-inline:10px; color:#f4ecda; font-size:11px; letter-spacing:.03em; }
+  .nav { position:absolute; inset:100% 0 auto; max-height:calc(100dvh - 68px); overflow-y:auto; gap:0; padding:8px 20px 16px; }
+  .nav a { display:flex; align-items:center; min-height:46px; border-bottom:1px solid #ffffff24; }
+}
+@media (max-width:640px) {
+  .header .brand { gap:7px; }
+  .header .brand-emblem { width:38px; height:38px; }
+  .header .brand-wordmark { font-size:clamp(14px,4vw,20px); }
+  .hero { display:flex; flex-direction:column; height:auto; min-height:100svh; max-height:none; padding:84px 16px 20px; }
+  .hero-copy { flex:1; position:relative; inset:auto; padding:18px 0; }
+  .hero-aside { position:relative; inset:auto; padding-top:10px; }
+  .hero h1 { font-size:clamp(48px,14vw,82px); }
+  .hero-lead { margin:20px auto; }
+  .hero-actions { gap:8px 16px; }
+  .hero-actions .button { height:48px; }
+  .booking-copy { padding-inline:0; }
+  .booking-copy h2, .masters .section-heading h2 { font-size:clamp(32px,8.8vw,48px); }
+  .booking-online .button { min-width:0; }
+  .price-heading { transform:none; }
+  .map-tools .chip { flex:1 1 175px; justify-content:center; }
+  .booking-start { overflow:auto; }
+}
+@media (max-width:380px) {
+  .catalog-grid { grid-template-columns:1fr; }
+  .catalog-card { display:grid; grid-template-columns:32% minmax(0,1fr); }
+  .catalog-card img { align-self:start; }
+  .catalog-info h4 { overflow-wrap:break-word; }
+}
