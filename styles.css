@@ -472,25 +472,25 @@ body:has(.booking-dialog[open]) { overflow:hidden; }
 .catalog-group h3, .catalog-price-group { border-top:1px solid #aaa190; padding-top:14px; color:#655538; font:600 14px/1.4 "Manrope",sans-serif; letter-spacing:.09em; text-transform:uppercase; }
 .catalog-group h3 { margin:0 0 18px; }
 .catalog-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(12px,1.6vw,24px); }
-.catalog-card { display:flex; flex-direction:column; background:#191817; color:#f4ecda; }
+.catalog-card { display:flex; flex-direction:column; color:var(--ink); }
 .catalog-card img { width:100%; height:auto; aspect-ratio:1; object-fit:cover; }
-.catalog-info { display:flex; flex:1; flex-direction:column; align-items:start; padding:clamp(14px,1.5vw,24px); }
+.catalog-info { display:flex; flex:1; flex-direction:column; align-items:start; padding:16px 0 8px; }
 .catalog-info h4 { margin:0 0 14px; font:500 clamp(20px,1.7vw,28px)/1.2 "Oswald",sans-serif; }
-.catalog-info p { margin:auto 0 0; color:#e5c881; font-size:14px; }
+.catalog-info p { margin:auto 0 0; color:#705323; font-size:14px; }
 .catalog-card:focus-visible { outline:3px solid #8b6934; outline-offset:3px; }
-@media(hover:hover) { .catalog-card:hover h4 { color:#e5c881; } }
+@media(hover:hover) { .catalog-card:hover h4 { color:#705323; } }
 .catalog-price-group { margin:24px 0 0; }
 .catalog-price-group:first-child { margin-top:0; border:0; }
 @media(max-width:900px) { .catalog-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-@media(max-width:420px) { .catalog-info { padding:12px; } .catalog-info p { font-size:13px; } }
+@media(max-width:420px) { .catalog-info { padding:12px 0 6px; } .catalog-info p { font-size:13px; } }
 @media(max-width:640px) {
   .services .section-heading h2 { font-size:clamp(34px,9vw,48px); }
   .catalog-info h4 { overflow-wrap:anywhere; }
 }
 
 .service-rates { width:100%; margin-top:10px; }
-.service-rates a { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:4px; min-height:44px; border-top:1px solid #685b44; color:#f4ecda; font-size:13px; }
-.service-rates a:hover, .service-rates a:focus-visible { color:#e5c881; text-decoration:underline; }
+.service-rates a { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:4px; min-height:44px; border-top:1px solid #c7bfaf; color:var(--ink); font-size:13px; }
+.service-rates a:hover, .service-rates a:focus-visible { color:#705323; text-decoration:underline; }
 .price-row strong small { font-family:"Manrope",sans-serif; }
 .map-key { margin:10px 0; text-align:left; color:#f4ecda; font-size:14px; }
 
@@ -547,7 +547,7 @@ body:has(.master-dialog[open]) { overflow:hidden; }
 }
 @media (max-width:380px) {
   .catalog-grid { grid-template-columns:1fr; }
-  .catalog-card { display:grid; grid-template-columns:32% minmax(0,1fr); }
+  .catalog-card { display:grid; grid-template-columns:32% minmax(0,1fr); column-gap:12px; }
   .catalog-card img { align-self:start; }
   .catalog-info h4 { overflow-wrap:break-word; }
 }
