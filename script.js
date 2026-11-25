@@ -111,7 +111,7 @@ const localClock = new Intl.DateTimeFormat("en-GB", {
 function updateHours() {
   const time = localClock.format(new Date());
   const open = time >= opensAt && time < closesAt;
-  hoursStatus.textContent = open ? "Открыты до " + closesAt : "Закрыто до " + opensAt;
+  hoursStatus.textContent = open ? "Открыты до " + closesAt : "Откроемся в " + opensAt;
   hoursStatus.parentElement.classList.toggle("closed", !open);
 }
 
