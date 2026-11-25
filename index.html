@@ -51,7 +51,7 @@ body.loading { overflow:hidden; }
 }
 
 </style>
-  <link rel="stylesheet" href="styles.css?v=64">
+  <link rel="stylesheet" href="styles.css?v=65">
   <noscript><style>.preloader{display:none!important}body.loading{overflow:auto!important}</style></noscript>
 </head>
 <body class="loading">
@@ -88,6 +88,7 @@ body.loading { overflow:hidden; }
   <main>
     <section class="hero" id="about">
       <div class="hero-bg" aria-hidden="true">
+        <canvas class="hero-film-backdrop" width="90" height="160"></canvas>
         <video class="hero-film" muted autoplay loop playsinline preload="none" poster="assets/hero-team.webp">
           <source src="assets/hero-film.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference)">
         </video>
@@ -364,6 +365,6 @@ body.loading { overflow:hidden; }
     </section>
     <iframe hidden title="Выбор услуги, мастера и времени в DIKIDI"></iframe>
   </dialog>
-  <script src="script.js?v=38"></script>
+  <script src="script.js?v=39"></script>
 </body>
 </html>
