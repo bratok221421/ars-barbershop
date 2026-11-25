@@ -51,7 +51,7 @@ body.loading { overflow:hidden; }
 }
 
 </style>
-  <link rel="stylesheet" href="styles.css?v=46">
+  <link rel="stylesheet" href="styles.css?v=47">
   <noscript><style>.preloader{display:none!important}body.loading{overflow:auto!important}</style></noscript>
 </head>
 <body class="loading">
@@ -95,6 +95,7 @@ body.loading { overflow:hidden; }
         <p class="hero-lead">Мы создаём не просто причёску, а образ, который остаётся с вами после выхода из кресла.</p>
         <div class="hero-actions">
           <a class="button button-light" href="#booking" aria-haspopup="dialog" data-booking-url="https://dikidi.net/ru/record/1854348?st_m=2"><span>Выбрать время</span></a>
+          <a class="button hero-directions" href="#location-map">Как добраться</a>
           <button class="play-button" id="openAtmosphereButton" type="button" aria-label="Посмотреть видео интерьера">
             <span class="play-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
             <span>Посмотреть интерьер</span>
@@ -334,10 +335,7 @@ body.loading { overflow:hidden; }
           <h2>Твой новый<br><em>образ уже близко</em></h2>
           <p>Выберите услугу, мастера и свободное время в DIKIDI.</p>
           <div class="contact-location">
-            <figure class="entrance-photo">
-              <img src="assets/ars-entrance.webp" width="960" height="1280" alt="Вход в ARS Barber: белая дверь под вывеской «Барбершоп», слева светится барберский столб" loading="lazy">
-              <figcaption>Вход с Крымской улицы, 2Д</figcaption>
-            </figure>
+            <iframe class="location-map" id="location-map" title="ARS Barber на Яндекс Картах — Бахчисарай, Крымская улица, 2Д" src="https://yandex.ru/map-widget/v1/?ll=33.840740%2C44.746630&amp;z=17&amp;mode=search&amp;ol=biz&amp;oid=195463422607" loading="lazy" allowfullscreen></iframe>
             <div>
           <div class="booking-details">
             <div><span>Адрес</span><strong>Бахчисарай, Крымская улица, 2Д</strong></div>
@@ -346,7 +344,6 @@ body.loading { overflow:hidden; }
           </div>
           <div class="contact-actions">
             <a class="chip" href="tel:+79781617720">Позвонить</a>
-            <a class="chip" href="https://yandex.ru/maps/org/195463422607/" target="_blank" rel="noopener">Как добраться</a>
           </div>
             </div>
           </div>
