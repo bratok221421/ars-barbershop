@@ -144,11 +144,31 @@ function updateMobileBooking() {
 new IntersectionObserver(updateMobileBooking).observe(bookingHero);
 window.addEventListener("pageshow", updateMobileBooking);
 
-document.querySelectorAll("[data-booking-url]").forEach((link) => {
+const bookingStart = bookingDialog.querySelector(".booking-start");
+
+function showBookingFrame(url) {
+  bookingStart.hidden = true;
+  bookingFrame.hidden = false;
+  bookingFrame.src = url;
+}
+
+document.querySelectorAll("[data-booking-start], [data-booking-url]").forEach((link) => {
   link.addEventListener("click", (event) => {
     event.preventDefault();
-    bookingFrame.src = link.dataset.bookingUrl;
+    if (link.dataset.bookingUrl) {
+      showBookingFrame(link.dataset.bookingUrl);
+    } else {
+      bookingFrame.hidden = true;
+      bookingStart.hidden = false;
+    }
     bookingDialog.showModal();
+  });
+});
+
+bookingStart.querySelectorAll("[data-path]").forEach((button) => {
+  button.addEventListener("click", () => {
+    showBookingFrame("https://dikidi.net/ru/record/1854348?st_m=" + button.dataset.path);
+    bookingFrame.focus();
   });
 });
 

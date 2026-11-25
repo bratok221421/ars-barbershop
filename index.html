@@ -80,7 +80,7 @@ body.loading { overflow:hidden; }
       <a href="#about">О нас</a>
       <a href="#booking">Контакты</a>
     </nav>
-    <a class="header-action" href="#booking" aria-haspopup="dialog" data-booking-url="https://dikidi.net/ru/record/1854348?st_m=2">Записаться</a>
+    <a class="header-action" href="#booking" aria-haspopup="dialog" data-booking-start>Записаться</a>
     <button class="menu-button" id="menuButton" type="button" aria-label="Открыть меню" aria-expanded="false">
       <span></span><span></span>
     </button>
@@ -333,12 +333,12 @@ body.loading { overflow:hidden; }
             <h3>Выберите удобное время</h3>
             <p>Посмотрите свободные часы и подтвердите запись в DIKIDI.</p>
           </div>
-          <a class="button button-light" href="#booking" aria-haspopup="dialog" data-booking-url="https://dikidi.net/ru/record/1854348?st_m=2"><span>Записаться онлайн</span></a>
+          <a class="button button-light" href="#booking" aria-haspopup="dialog" data-booking-start><span>Записаться онлайн</span></a>
         </div>
       </div>
     </section>
   </main>
-  <a class="mobile-booking" hidden href="#booking" aria-haspopup="dialog" data-booking-url="https://dikidi.net/ru/record/1854348?st_m=2">Выбрать время</a>
+  <a class="mobile-booking" hidden href="#booking" aria-haspopup="dialog" data-booking-start>Выбрать время</a>
 
   <footer>
     <a class="brand" href="#" aria-label="БАРБЕРШОП N1, Бахчисарай — на главную">
@@ -365,8 +365,15 @@ body.loading { overflow:hidden; }
       <strong id="bookingTitle">Онлайн-запись · БАРБЕРШОП N1</strong>
       <form method="dialog"><button type="submit" autofocus>Закрыть</button></form>
     </div>
-    <iframe title="Выбор услуги, мастера и времени в DIKIDI"></iframe>
+    <section class="booking-start" hidden aria-labelledby="bookingStartTitle">
+      <h2 id="bookingStartTitle">Новая запись</h2>
+      <div class="booking-paths">
+        <button type="button" data-path="2">Выбрать услуги</button>
+        <button type="button" data-path="1">Выбрать специалиста</button>
+      </div>
+    </section>
+    <iframe hidden title="Выбор услуги, мастера и времени в DIKIDI"></iframe>
   </dialog>
-  <script src="script.js?v=32"></script>
+  <script src="script.js?v=33"></script>
 </body>
 </html>
